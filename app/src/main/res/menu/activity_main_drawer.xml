@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="MENU">
+        </item>
+        <item
+            android:id="@+id/nav_grammar"
+            android:icon="@drawable/iconfinder_book_2639779"
+            android:title="Ngữ pháp tiếng Anh" />
+        <item
+            android:id="@+id/nav_translate"
+            android:icon="@drawable/ic_translate"
+            android:title="Tra từ, dịch văn bản" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about"
+            android:title="Giới thiệu" />
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/iconfinder_exit_2639810"
+            android:title="Thoát" />
+
+    </group>
+
+
+
+</menu>

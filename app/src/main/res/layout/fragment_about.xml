@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#E2DBDB"
+    android:layout_height="match_parent"
+    tools:context=".AboutFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+<androidx.cardview.widget.CardView
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="32dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="200dp">
+      <TextView
+          android:layout_margin="8dp"
+          android:textSize="20sp"
+          android:textColor="#138114"
+          android:text="Ứng dụng được phát triển bởi Nguyễn Hợp Thành"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+      </TextView>
+      <TextView
+          android:layout_margin="8dp"
+          android:textSize="20sp"
+          android:textColor="#138114"
+          android:text="mọi thông tin vui lòng xin liên hệ: thanhnhph07604@fpt.edu.vn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+      </TextView>
+      <TextView
+          android:layout_margin="8dp"
+          android:textSize="20sp"
+          android:textColor="#138114"
+          android:text="Số điện thoại: 0869231335"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+      </TextView>
+  </LinearLayout>
+</androidx.cardview.widget.CardView>
+</FrameLayout>
