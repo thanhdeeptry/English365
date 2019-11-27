@@ -46,7 +46,27 @@ LessonFollowIDAdapter adapter;
     void configRv(){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvLeessonflId.setLayoutManager(layoutManager);
-        adapter=new LessonFollowIDAdapter(this,list);
+        adapter= new LessonFollowIDAdapter(this, list) {
+            @Override
+            public void grammar() {
+
+            }
+
+            @Override
+            public void translate() {
+
+            }
+
+            @Override
+            public void about() {
+
+            }
+
+            @Override
+            public void exit() {
+
+            }
+        };
         rvLeessonflId.setAdapter(adapter);
     }
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

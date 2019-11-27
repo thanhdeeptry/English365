@@ -14,16 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.firstproject.LeessonFollowIDActivity;
 import com.example.firstproject.Model.LessonThroughTense;
 import com.example.firstproject.R;
+import com.example.firstproject.onClickView;
+import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
 
-public class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThroughTenseAdapter.ViewHolder> {
+public abstract class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThroughTenseAdapter.ViewHolder> implements onClickView {
     Context context;
     ArrayList<LessonThroughTense> data;
-
+    ViewPresenter viewPresenter;
     public LessonThroughTenseAdapter(Context context, ArrayList<LessonThroughTense> data) {
         this.context = context;
         this.data = data;
+        viewPresenter=new ViewPresenter( this);
     }
 
 
@@ -42,8 +45,7 @@ public class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThroug
         holder.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, LeessonFollowIDActivity.class);
-                context.startActivity(intent);
+               viewPresenter.navigate();
             }
         });
     }
@@ -52,6 +54,13 @@ public class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThroug
     public int getItemCount() {
         return data.size();
     }
+
+    @Override
+    public void navigate() {
+        context.startActivity(new Intent(context, LeessonFollowIDActivity.class));
+    }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;

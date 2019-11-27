@@ -16,16 +16,19 @@ import com.example.firstproject.LessonActivity;
 import com.example.firstproject.Model.LessonFollowID;
 import com.example.firstproject.Model.LessonThroughWord;
 import com.example.firstproject.R;
+import com.example.firstproject.onClickView;
+import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
 
-public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThroughWordAdapter.ViewHolder> {
+public abstract class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThroughWordAdapter.ViewHolder>  implements onClickView{
     Context context;
     ArrayList<LessonThroughWord> data;
-
+    public ViewPresenter viewPresenter;
     public LessonThroughWordAdapter(Context context, ArrayList<LessonThroughWord> data) {
         this.context = context;
         this.data = data;
+        viewPresenter=new ViewPresenter((onClickView) this);
     }
 
     @NonNull
@@ -42,8 +45,7 @@ public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThrough
         holder.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, LeessonFollowIDActivity.class);
-                context.startActivity(intent);
+               viewPresenter.navigate();
             }
         });
     }
@@ -51,6 +53,12 @@ public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThrough
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    @Override
+    public void navigate() {
+        Intent intent=new Intent(context, LeessonFollowIDActivity.class);
+        context.startActivity(intent);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

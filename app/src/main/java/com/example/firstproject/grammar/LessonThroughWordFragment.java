@@ -48,7 +48,27 @@ public class LessonThroughWordFragment  extends Fragment {
 
         rvLesson = view.findViewById(R.id.rvLesson);
         rvLesson.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        adapter = new LessonThroughWordAdapter(getContext(), list);
+        adapter = new LessonThroughWordAdapter(getContext(), list) {
+            @Override
+            public void grammar() {
+
+            }
+
+            @Override
+            public void translate() {
+
+            }
+
+            @Override
+            public void about() {
+
+            }
+
+            @Override
+            public void exit() {
+
+            }
+        };
         rvLesson.setAdapter(adapter);
     }
 }

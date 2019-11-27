@@ -14,16 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.firstproject.LessonActivity;
 import com.example.firstproject.Model.LessonFollowID;
 import com.example.firstproject.R;
+import com.example.firstproject.onClickView;
+import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
 
-public class LessonFollowIDAdapter extends RecyclerView.Adapter<LessonFollowIDAdapter.ViewHolder> {
+public abstract class LessonFollowIDAdapter extends RecyclerView.Adapter<LessonFollowIDAdapter.ViewHolder> implements onClickView  {
     Context context;
     ArrayList<LessonFollowID> list;
-
+    ViewPresenter viewPresenter;
     public LessonFollowIDAdapter(Context context, ArrayList<LessonFollowID> list) {
         this.context = context;
         this.list = list;
+        viewPresenter=new ViewPresenter(this);
     }
 
     @NonNull
@@ -40,7 +43,7 @@ public class LessonFollowIDAdapter extends RecyclerView.Adapter<LessonFollowIDAd
         holder.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, LessonActivity.class));
+                viewPresenter.navigate();
             }
         });
     }
@@ -49,6 +52,12 @@ public class LessonFollowIDAdapter extends RecyclerView.Adapter<LessonFollowIDAd
     public int getItemCount() {
         return list.size();
     }
+
+    @Override
+    public void navigate() {
+        context.startActivity(new Intent(context, LessonActivity.class));
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;

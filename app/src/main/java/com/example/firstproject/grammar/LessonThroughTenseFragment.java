@@ -50,7 +50,27 @@ public class LessonThroughTenseFragment extends Fragment {
     void configRv(){
         rvLesson = vRoot.findViewById(R.id.rvLesson);
         rvLesson.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        adapter=new LessonThroughTenseAdapter(getContext(),list);
+        adapter= new LessonThroughTenseAdapter(getContext(), list) {
+            @Override
+            public void grammar() {
+
+            }
+
+            @Override
+            public void translate() {
+
+            }
+
+            @Override
+            public void about() {
+
+            }
+
+            @Override
+            public void exit() {
+
+            }
+        };
         rvLesson.setAdapter(adapter);
     }
 }
