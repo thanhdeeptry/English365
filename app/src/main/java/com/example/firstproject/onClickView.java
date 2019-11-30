@@ -6,4 +6,6 @@ public interface onClickView {
     void translate();
     void about();
     void exit();
+    void engtovn();
+    void vntoenng();
 }

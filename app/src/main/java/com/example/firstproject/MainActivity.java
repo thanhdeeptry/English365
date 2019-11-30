@@ -127,4 +127,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         builder.show();
     }
+
+    @Override
+    public void engtovn() {
+
+    }
+
+    @Override
+    public void vntoenng() {
+
+    }
 }

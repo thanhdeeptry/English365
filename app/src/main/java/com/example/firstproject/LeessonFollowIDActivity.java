@@ -66,6 +66,16 @@ LessonFollowIDAdapter adapter;
             public void exit() {
 
             }
+
+            @Override
+            public void engtovn() {
+
+            }
+
+            @Override
+            public void vntoenng() {
+
+            }
         };
         rvLeessonflId.setAdapter(adapter);
     }

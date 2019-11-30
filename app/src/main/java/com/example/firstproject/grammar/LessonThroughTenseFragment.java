@@ -70,6 +70,16 @@ public class LessonThroughTenseFragment extends Fragment {
             public void exit() {
 
             }
+
+            @Override
+            public void engtovn() {
+
+            }
+
+            @Override
+            public void vntoenng() {
+
+            }
         };
         rvLesson.setAdapter(adapter);
     }

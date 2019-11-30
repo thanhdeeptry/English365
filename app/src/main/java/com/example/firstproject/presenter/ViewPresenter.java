@@ -1,27 +1,14 @@
 package com.example.firstproject.presenter;
 
-import android.content.Context;
-import android.view.MenuItem;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.example.firstproject.GrammarFragment;
-import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
 
 public class ViewPresenter {
     private onClickView onClickView;
-    FragmentManager fragmentManager;
-    DrawerLayout drawer;
+
     public ViewPresenter(com.example.firstproject.onClickView onClickView) {
         this.onClickView = onClickView;
     }
 
-    public ViewPresenter(Context context) {
-    }
 
     public void grammar(){
 
@@ -40,5 +27,11 @@ public class ViewPresenter {
 
     public void navigate() {
         onClickView.navigate();
+    }
+    public void Engtovn(){
+        onClickView.engtovn();
+    }
+    public void VntoEng(){
+        onClickView.vntoenng();
     }
 }
