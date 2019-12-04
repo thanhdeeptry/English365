@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.firstproject.Model.LessonThroughWord;
 import com.example.firstproject.R;
 import com.example.firstproject.adapter.LessonThroughWordAdapter;
+import com.example.firstproject.database.DataBaseHelper;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class LessonThroughWordFragment  extends Fragment {
     ArrayList<LessonThroughWord> list;
     RecyclerView rvLesson;
     LessonThroughWordAdapter adapter;
+    private DataBaseHelper dataBaseHelper;
     public LessonThroughWordFragment(){
 
     }
@@ -32,16 +34,10 @@ public class LessonThroughWordFragment  extends Fragment {
     }
     void init(){
         list= new ArrayList<>();
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-            list.add(new LessonThroughWord("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-
+        dataBaseHelper = new DataBaseHelper(getContext());
+        dataBaseHelper.createDataBase();
+        list=dataBaseHelper.getAllLessionByWord();
+        list= new ArrayList<>();
         configRv();
     }
     void configRv(){

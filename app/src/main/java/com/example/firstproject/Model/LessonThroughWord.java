@@ -1,30 +1,30 @@
 package com.example.firstproject.Model;
 
 public class LessonThroughWord {
-    int Id;
-    String title;
-    String Des;
+    public int id;
+    public String title;
+    public String des;
 
     public LessonThroughWord() {
     }
 
     public LessonThroughWord(String title, String des) {
         this.title = title;
-        Des = des;
+        this.des = des;
     }
 
-    public LessonThroughWord(int id, String title, String des) {
-        Id = id;
+    public LessonThroughWord(int id, String title, String es) {
+        this.id = id;
         this.title = title;
-        Des = des;
+        this.des = es;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -36,10 +36,10 @@ public class LessonThroughWord {
     }
 
     public String getDes() {
-        return Des;
+        return des;
     }
 
-    public void setDes(String des) {
-        Des = des;
+    public void setDes(String es) {
+        this.des = des;
     }
 }
