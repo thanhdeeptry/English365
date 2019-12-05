@@ -30,6 +30,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private String DES="describle";
 
 
+
     private void copyDataBase() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
         String outFileName = DB_PATH + DB_NAME;
