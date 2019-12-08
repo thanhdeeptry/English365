@@ -13,6 +13,7 @@ import com.example.firstproject.Model.LessonThroughTense;
 import com.example.firstproject.Model.LessonThroughWord;
 import com.example.firstproject.R;
 import com.example.firstproject.adapter.LessonThroughTenseAdapter;
+import com.example.firstproject.database.DataBaseHelper;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class LessonThroughTenseFragment extends Fragment {
     RecyclerView rvLesson;
     ArrayList<LessonThroughTense> list;
     LessonThroughTenseAdapter adapter;
+    DataBaseHelper dataBaseHelper;
     public LessonThroughTenseFragment() {
 
     }
@@ -34,52 +36,17 @@ public class LessonThroughTenseFragment extends Fragment {
     void init(){
 
         list=new ArrayList<>();
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
-        list.add(new LessonThroughTense("Các thì trong tiếng Anh","Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn ..."));
+        dataBaseHelper = new DataBaseHelper(getContext());
+        dataBaseHelper.createDataBase();
+        list=dataBaseHelper.getAllLessionByTense();
         configRv();
     }
     void configRv(){
         rvLesson = vRoot.findViewById(R.id.rvLesson);
         rvLesson.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         adapter= new LessonThroughTenseAdapter(getContext(), list) {
-            @Override
-            public void grammar() {
 
-            }
 
-            @Override
-            public void translate() {
-
-            }
-
-            @Override
-            public void about() {
-
-            }
-
-            @Override
-            public void exit() {
-
-            }
-
-            @Override
-            public void engtovn() {
-
-            }
-
-            @Override
-            public void vntoenng() {
-
-            }
         };
         rvLesson.setAdapter(adapter);
     }

@@ -34,4 +34,8 @@ public class ViewPresenter {
     public void VntoEng(){
         onClickView.vntoenng();
     }
+    public void navigateflid(int pos){
+        onClickView.navigateflid(pos);
+    }
+
 }

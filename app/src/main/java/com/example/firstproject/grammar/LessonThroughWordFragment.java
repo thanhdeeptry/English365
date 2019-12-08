@@ -37,7 +37,6 @@ public class LessonThroughWordFragment  extends Fragment {
         dataBaseHelper = new DataBaseHelper(getContext());
         dataBaseHelper.createDataBase();
         list=dataBaseHelper.getAllLessionByWord();
-        list= new ArrayList<>();
         configRv();
     }
     void configRv(){
@@ -45,35 +44,8 @@ public class LessonThroughWordFragment  extends Fragment {
         rvLesson = view.findViewById(R.id.rvLesson);
         rvLesson.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         adapter = new LessonThroughWordAdapter(getContext(), list) {
-            @Override
-            public void grammar() {
 
-            }
 
-            @Override
-            public void translate() {
-
-            }
-
-            @Override
-            public void about() {
-
-            }
-
-            @Override
-            public void exit() {
-
-            }
-
-            @Override
-            public void engtovn() {
-
-            }
-
-            @Override
-            public void vntoenng() {
-
-            }
         };
         rvLesson.setAdapter(adapter);
     }

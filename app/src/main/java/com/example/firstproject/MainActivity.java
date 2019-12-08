@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+
+
+
     @Override
     public void navigate() {
 
@@ -137,4 +140,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void vntoenng() {
 
     }
+
+    @Override
+    public void navigateflid(int pos) {
+
+    }
+
 }

@@ -1,9 +1,9 @@
 package com.example.firstproject.Model;
 
 public class LessonThroughTense {
-    int Id;
-    String title;
-    String Des;
+    public int Id;
+    public String title;
+    public String Des;
 
     public LessonThroughTense() {
     }

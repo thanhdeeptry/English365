@@ -13,25 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firstproject.LeessonFollowIDWordActivity;
-import com.example.firstproject.LessionFlIdTenseActivity;
-import com.example.firstproject.Model.LessonThroughTense;
+import com.example.firstproject.LessonFlLessonIdWordActivity;
+import com.example.firstproject.Model.LessonFlIdWord;
 import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
 import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
 
-public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThroughTenseAdapter.ViewHolder> implements onClickView {
+public class LessionFlIdWordAdapter extends RecyclerView.Adapter<LessionFlIdWordAdapter.ViewHolder> implements onClickView {
     Context context;
-    ArrayList<LessonThroughTense> data;
+    ArrayList<LessonFlIdWord> list;
     ViewPresenter viewPresenter;
-    public LessonThroughTenseAdapter(Context context, ArrayList<LessonThroughTense> data) {
+
+    public LessionFlIdWordAdapter(Context context, ArrayList<LessonFlIdWord> list) {
         this.context = context;
-        this.data = data;
-        viewPresenter=new ViewPresenter( this);
+        this.list = list;
+        viewPresenter=new ViewPresenter(this);
     }
-
-
 
     @NonNull
     @Override
@@ -42,8 +41,8 @@ public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThrou
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.tvTitle.setText(position+1+". "+data.get(position).getTitle());
-        holder.tvDes.setText(data.get(position).getDes());
+        holder.tvTitle.setText(list.get(position).getName());
+        holder.tvDes.setText(list.get(position).getDes());
         holder.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +53,7 @@ public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThrou
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return list.size();
     }
 
     @Override
@@ -92,15 +91,16 @@ public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThrou
 
     }
 
+
+
     @Override
     public void navigateflid(int pos) {
         Bundle bundle=new Bundle();
-        bundle.putString("idtense",data.get(pos).getId()+"");
-        Intent intent=new Intent(context, LessionFlIdTenseActivity.class);
+        bundle.putString("id",list.get(pos).getId()+"");
+        Intent intent=new Intent(context, LessonFlLessonIdWordActivity.class);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;

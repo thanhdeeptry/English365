@@ -2,6 +2,7 @@ package com.example.firstproject.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firstproject.LeessonFollowIDActivity;
-import com.example.firstproject.LessonActivity;
-import com.example.firstproject.Model.LessonFollowID;
+import com.example.firstproject.LeessonFollowIDWordActivity;
 import com.example.firstproject.Model.LessonThroughWord;
 import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
@@ -21,7 +20,7 @@ import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
 
-public abstract class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThroughWordAdapter.ViewHolder>  implements onClickView{
+public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThroughWordAdapter.ViewHolder>  implements onClickView{
     Context context;
     ArrayList<LessonThroughWord> data;
     public ViewPresenter viewPresenter;
@@ -39,13 +38,13 @@ public abstract class LessonThroughWordAdapter extends RecyclerView.Adapter<Less
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.tvTitle.setText(position+1+". "+data.get(position).getTitle());
         holder.tvDes.setText(data.get(position).getDes());
         holder.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               viewPresenter.navigate();
+               viewPresenter.navigateflid(position);
             }
         });
     }
@@ -57,7 +56,45 @@ public abstract class LessonThroughWordAdapter extends RecyclerView.Adapter<Less
 
     @Override
     public void navigate() {
-        Intent intent=new Intent(context, LeessonFollowIDActivity.class);
+
+    }
+
+    @Override
+    public void grammar() {
+
+    }
+
+    @Override
+    public void translate() {
+
+    }
+
+    @Override
+    public void about() {
+
+    }
+
+    @Override
+    public void exit() {
+
+    }
+
+    @Override
+    public void engtovn() {
+
+    }
+
+    @Override
+    public void vntoenng() {
+
+    }
+
+    @Override
+    public void navigateflid(int pos) {
+        Bundle bundle=new Bundle();
+        bundle.putString("idword",data.get(pos).getId()+"");
+        Intent intent=new Intent(context, LeessonFollowIDWordActivity.class);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 
@@ -65,11 +102,12 @@ public abstract class LessonThroughWordAdapter extends RecyclerView.Adapter<Less
         TextView tvTitle;
         TextView tvDes;
         ImageView imvRight;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvTitle=itemView.findViewById(R.id.tvTitle);
-            tvDes=itemView.findViewById(R.id.tvDes);
-            imvRight=itemView.findViewById(R.id.imvRight);
+        public ViewHolder(View itemview) {
+            super(itemview);
+                tvTitle=itemview.findViewById(R.id.tvTitle);
+                tvDes=itemview.findViewById(R.id.tvDes);
+                imvRight=itemview.findViewById(R.id.imvRight);
         }
+
     }
 }

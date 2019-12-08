@@ -64,6 +64,7 @@ public ViewPresenter presenter;
 
     }
 
+
     @Override
     public void grammar() {
 
@@ -94,4 +95,11 @@ public ViewPresenter presenter;
     public void vntoenng() {
         Toast.makeText(getContext(),"Translate from Vietnamese to English",Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void navigateflid(int pos) {
+
+    }
+
+
 }

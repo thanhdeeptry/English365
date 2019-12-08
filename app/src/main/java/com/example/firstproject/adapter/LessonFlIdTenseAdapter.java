@@ -2,6 +2,7 @@ package com.example.firstproject.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firstproject.LessonActivity;
-import com.example.firstproject.Model.LessonFollowID;
+import com.example.firstproject.LessonFlLessonIdWordActivity;
+import com.example.firstproject.Model.LessionFlIdTense;
 import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
 import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
 
-public abstract class LessonFollowIDAdapter extends RecyclerView.Adapter<LessonFollowIDAdapter.ViewHolder> implements onClickView  {
+public  class LessonFlIdTenseAdapter extends RecyclerView.Adapter<LessonFlIdTenseAdapter.ViewHolder> implements onClickView {
     Context context;
-    ArrayList<LessonFollowID> list;
+    ArrayList<LessionFlIdTense> idTenses;
     ViewPresenter viewPresenter;
-    public LessonFollowIDAdapter(Context context, ArrayList<LessonFollowID> list) {
+
+    public LessonFlIdTenseAdapter(Context context, ArrayList<LessionFlIdTense> idTenses) {
         this.context = context;
-        this.list = list;
+        this.idTenses = idTenses;
         viewPresenter=new ViewPresenter(this);
     }
 
@@ -37,27 +39,64 @@ public abstract class LessonFollowIDAdapter extends RecyclerView.Adapter<LessonF
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvTitle.setText(list.get(position).getTitle());
-        holder.tvDes.setText(list.get(position).getDes());
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        holder.tvTitle.setText(idTenses.get(position).getName());
+        holder.tvDes.setText(idTenses.get(position).getDes());
         holder.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPresenter.navigate();
+                viewPresenter.navigateflid(position);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return idTenses.size();
     }
 
     @Override
     public void navigate() {
-        context.startActivity(new Intent(context, LessonActivity.class));
+  }
+
+    @Override
+    public void grammar() {
+
     }
 
+    @Override
+    public void translate() {
+
+    }
+
+    @Override
+    public void about() {
+
+    }
+
+    @Override
+    public void exit() {
+
+    }
+
+    @Override
+    public void engtovn() {
+
+    }
+
+    @Override
+    public void vntoenng() {
+
+    }
+
+    @Override
+    public void navigateflid(int pos) {
+        Bundle bundle=new Bundle();
+        bundle.putString("id",idTenses.get(pos).getId()+"");
+        Intent intent=new Intent(context, LessonFlLessonIdWordActivity.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;

@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.firstproject.Model.LessionFlIdTense;
+import com.example.firstproject.Model.LessonFlIdWord;
+import com.example.firstproject.Model.LessonFlLessonIdWord;
+import com.example.firstproject.Model.LessonThroughTense;
 import com.example.firstproject.Model.LessonThroughWord;
 
 import java.io.File;
@@ -25,12 +29,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final Context mContext;
 
     private String TABLE1 = "LessionFLWord";
-    private String  ID = "id";
+    private String  ID = "idword";
     private String NAME="name";
     private String DES="describle";
-
-
-
+    private String TABLE2 = "LessionFLTense";
+    private String  ID2 = "idtense";
+    private String NAME2="name";
+    private String DES2="describle";
+    private String TABLE3 = "LessionFlIdword";
+    private String  ID3 = "id";
+    private String IDWORD="idword";
+    private String NAME3="name";
+    private String DES3="describle";
+    private String TABLE4 = "LessionFlIdtense";
+    private String  ID4 = "id";
+    private String IDTense="idtense";
+    private String NAME4="name";
+    private String DES4="describle";
+    private String TABLE5="LessonFlLessonIdWord";
+    private String  ID5 = "id";
+    private String  THISID = "thisid";
+    private String  TITLE = "Title";
+    private String  subTITLE1 = "Subtitle1";
     private void copyDataBase() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
         String outFileName = DB_PATH + DB_NAME;
@@ -92,11 +112,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ArrayList<LessonThroughWord> words=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         String SQL = "SELECT * FROM " + TABLE1 ;
+
         Cursor cursor = sqLiteDatabase.rawQuery(SQL, null);
+        Log.e("sdasda",cursor.getCount()+"");
         if (cursor != null) {
             if (cursor.getCount() > 0) {
 
                 cursor.moveToFirst();
+
                 while (!cursor.isAfterLast()) {
 
                     LessonThroughWord word = new LessonThroughWord() ;
@@ -112,6 +135,116 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
         }
         return words;
+    }
+    public ArrayList<LessonThroughTense> getAllLessionByTense(){
+        ArrayList<LessonThroughTense> tenses=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        String SQL = "SELECT * FROM " + TABLE2 ;
+
+        Cursor cursor = sqLiteDatabase.rawQuery(SQL, null);
+        Log.e("sdasda",cursor.getCount()+"");
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()) {
+
+                    LessonThroughTense tense = new LessonThroughTense() ;
+
+                    tense.Id=cursor.getInt(cursor.getColumnIndex(ID2));
+                    tense.title=cursor.getString(cursor.getColumnIndex(NAME2));
+                    tense.Des=cursor.getString(cursor.getColumnIndex(DES2));
+                    tenses.add(tense);
+                    cursor.moveToNext();
+
+                }
+                cursor.close();
+            }
+        }
+        return tenses;
+    }
+    public ArrayList<LessonFlIdWord> getAllLessonFlIdWord(String wordid){
+        ArrayList<LessonFlIdWord> idWords=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        String selectQuery = "select * from " + TABLE3 + " where idword='" + wordid + "'";
+        Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()) {
+
+                    LessonFlIdWord idWord = new LessonFlIdWord() ;
+
+                    idWord.id=cursor.getInt(cursor.getColumnIndex(ID3));
+                    idWord.idword=cursor.getInt(cursor.getColumnIndex(IDWORD));
+                    idWord.name=cursor.getString(cursor.getColumnIndex(NAME3));
+                    idWord.des=cursor.getString(cursor.getColumnIndex(DES3));
+                    idWords.add(idWord);
+                    cursor.moveToNext();
+
+                }
+                cursor.close();
+            }
+        }
+        return idWords;
+    }
+    public ArrayList<LessionFlIdTense> getAllLessonFlIdtense(String tenseid){
+        ArrayList<LessionFlIdTense> idTenses=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        String selectQuery = "select * from " + TABLE4 + " where idtense='" + tenseid + "'";
+        Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()) {
+
+                    LessionFlIdTense idTense = new LessionFlIdTense() ;
+
+                    idTense.id=cursor.getInt(cursor.getColumnIndex(ID4));
+                    idTense.idtense=cursor.getInt(cursor.getColumnIndex(IDTense));
+                    idTense.name=cursor.getString(cursor.getColumnIndex(NAME4));
+                    idTense.des=cursor.getString(cursor.getColumnIndex(DES4));
+                    idTenses.add(idTense);
+                    cursor.moveToNext();
+
+                }
+                cursor.close();
+            }
+        }
+        return idTenses;
+    }
+    public ArrayList<LessonFlLessonIdWord> getAllLessonFlLessonIdWord(String id){
+        ArrayList<LessonFlLessonIdWord> lessonFlLessonIdWords=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        String selectQuery = "select * from " + TABLE5 + " where id='" + id + "'";
+        Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()) {
+
+                    LessonFlLessonIdWord lessonFlLessonIdWord = new LessonFlLessonIdWord() ;
+
+                    lessonFlLessonIdWord.id=cursor.getInt(cursor.getColumnIndex(ID5));
+                    lessonFlLessonIdWord.thisid=cursor.getInt(cursor.getColumnIndex(THISID));
+                    lessonFlLessonIdWord.title=cursor.getString(cursor.getColumnIndex(TITLE));
+                    lessonFlLessonIdWord.subtitle1=cursor.getString(cursor.getColumnIndex(subTITLE1));
+
+                    lessonFlLessonIdWords.add(lessonFlLessonIdWord);
+                    cursor.moveToNext();
+
+                }
+                cursor.close();
+            }
+        }
+        return lessonFlLessonIdWords;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
