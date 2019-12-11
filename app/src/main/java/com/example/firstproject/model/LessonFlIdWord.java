@@ -1,21 +1,22 @@
-package com.example.firstproject.Model;
+package com.example.firstproject.model;
 
-public class LessionFlIdTense {
-    public int id,idtense;
-    public String name,des;
+public class LessonFlIdWord {
+    public int id,idword;
+    public String name;
+    public String des;
 
-    public LessionFlIdTense(int idtense, String name, String des) {
-        this.idtense = idtense;
+    public LessonFlIdWord(int idword, String name, String des) {
+        this.idword = idword;
         this.name = name;
         this.des = des;
     }
 
-    public LessionFlIdTense() {
+    public LessonFlIdWord() {
     }
 
-    public LessionFlIdTense(int id, int idtense, String name, String des) {
+    public LessonFlIdWord(int id, int idword, String name, String des) {
         this.id = id;
-        this.idtense = idtense;
+        this.idword = idword;
         this.name = name;
         this.des = des;
     }
@@ -28,12 +29,12 @@ public class LessionFlIdTense {
         this.id = id;
     }
 
-    public int getIdtense() {
-        return idtense;
+    public int getIdword() {
+        return idword;
     }
 
-    public void setIdtense(int idtense) {
-        this.idtense = idtense;
+    public void setIdword(int idword) {
+        this.idword = idword;
     }
 
     public String getName() {

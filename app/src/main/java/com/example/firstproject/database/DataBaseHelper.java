@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.firstproject.Model.LessionFlIdTense;
-import com.example.firstproject.Model.LessonFlIdWord;
-import com.example.firstproject.Model.LessonFlLessonIdTense;
-import com.example.firstproject.Model.LessonFlLessonIdWord;
-import com.example.firstproject.Model.LessonThroughTense;
-import com.example.firstproject.Model.LessonThroughWord;
+import com.example.firstproject.model.LessonFlIdTense;
+import com.example.firstproject.model.LessonFlIdWord;
+import com.example.firstproject.model.LessonFlLessonIdTense;
+import com.example.firstproject.model.LessonFlLessonIdWord;
+import com.example.firstproject.model.LessonThroughTense;
+import com.example.firstproject.model.LessonThroughWord;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -197,8 +197,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return idWords;
     }
-    public ArrayList<LessionFlIdTense> getAllLessonFlIdtense(String tenseid){
-        ArrayList<LessionFlIdTense> idTenses=new ArrayList<>();
+    public ArrayList<LessonFlIdTense> getAllLessonFlIdtense(String tenseid){
+        ArrayList<LessonFlIdTense> idTenses=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         String selectQuery = "select * from " + TABLE4 + " where idtense='" + tenseid + "'";
         Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
@@ -209,7 +209,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
                 while (!cursor.isAfterLast()) {
 
-                    LessionFlIdTense idTense = new LessionFlIdTense() ;
+                    LessonFlIdTense idTense = new LessonFlIdTense() ;
 
                     idTense.id=cursor.getInt(cursor.getColumnIndex(ID4));
                     idTense.idtense=cursor.getInt(cursor.getColumnIndex(IDTense));

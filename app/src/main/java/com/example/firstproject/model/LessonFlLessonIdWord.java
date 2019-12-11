@@ -1,17 +1,12 @@
-package com.example.firstproject.Model;
+package com.example.firstproject.model;
 
-public class LessonFlLessonIdTense {
-    public int id,thisid;
-    public String title,subtitle1;
+public class LessonFlLessonIdWord {
+public int id,thisid;
+public String title,subtitle1;
 
-    public LessonFlLessonIdTense(int thisid, String title, String subtitle1) {
-        this.thisid = thisid;
-        this.title = title;
-        this.subtitle1 = subtitle1;
+    public LessonFlLessonIdWord() {
     }
 
-    public LessonFlLessonIdTense() {
-    }
 
     public int getId() {
         return id;
@@ -44,4 +39,6 @@ public class LessonFlLessonIdTense {
     public void setSubtitle1(String subtitle1) {
         this.subtitle1 = subtitle1;
     }
+
+
 }

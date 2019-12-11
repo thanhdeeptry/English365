@@ -9,8 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firstproject.Model.LessonThroughTense;
-import com.example.firstproject.Model.LessonThroughWord;
+import com.example.firstproject.model.LessonThroughTense;
 import com.example.firstproject.R;
 import com.example.firstproject.adapter.LessonThroughTenseAdapter;
 import com.example.firstproject.database.DataBaseHelper;

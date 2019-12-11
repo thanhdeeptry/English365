@@ -6,15 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firstproject.LeessonFollowIDWordActivity;
-import com.example.firstproject.LessionFlIdTenseActivity;
-import com.example.firstproject.Model.LessonThroughTense;
+import com.example.firstproject.LessonFlIdTenseActivity;
+import com.example.firstproject.databinding.RowLessonThrougtenseBinding;
+import com.example.firstproject.model.LessonThroughTense;
 import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
 import com.example.firstproject.presenter.ViewPresenter;
@@ -36,15 +35,15 @@ public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThrou
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.row_lesson,parent,false);
-        return new ViewHolder(view);
+        RowLessonThrougtenseBinding rowLessonThrougtenseBinding= DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.row_lesson_througtense,parent,false);
+        return new ViewHolder(rowLessonThrougtenseBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.tvTitle.setText(position+1+". "+data.get(position).getTitle());
-        holder.tvDes.setText(data.get(position).getDes());
-        holder.imvRight.setOnClickListener(new View.OnClickListener() {
+        LessonThroughTense lessonThroughTense=data.get(position);
+        holder.binding.setLessonthroughtense(lessonThroughTense);
+        holder.binding.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewPresenter.navigateflid(position);
@@ -97,21 +96,18 @@ public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThrou
         Bundle bundle=new Bundle();
         bundle.putString("name",data.get(pos).getTitle());
         bundle.putString("idtense",data.get(pos).getId()+"");
-        Intent intent=new Intent(context, LessionFlIdTenseActivity.class);
+        Intent intent=new Intent(context, LessonFlIdTenseActivity.class);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle;
-        TextView tvDes;
-        ImageView imvRight;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvTitle=itemView.findViewById(R.id.tvTitle);
-            tvDes=itemView.findViewById(R.id.tvDes);
-            imvRight=itemView.findViewById(R.id.imvRight);
+        RowLessonThrougtenseBinding binding;
+        public ViewHolder(@NonNull RowLessonThrougtenseBinding itemView) {
+            super(itemView.getRoot());
+            binding=itemView;
+
         }
     }
 }

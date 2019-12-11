@@ -11,13 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firstproject.Model.Word;
+import com.example.firstproject.model.Word;
 import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
 import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> implements onClickView {
     private ArrayList<Word> wordList;

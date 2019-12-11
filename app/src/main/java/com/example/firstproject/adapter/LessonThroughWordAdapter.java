@@ -10,10 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firstproject.LeessonFollowIDWordActivity;
-import com.example.firstproject.Model.LessonThroughWord;
+import com.example.firstproject.databinding.RowLessonFlidwordBinding;
+import com.example.firstproject.databinding.RowLessonThroughwordBinding;
+import com.example.firstproject.model.LessonThroughWord;
 import com.example.firstproject.R;
 import com.example.firstproject.onClickView;
 import com.example.firstproject.presenter.ViewPresenter;
@@ -33,15 +36,15 @@ public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThrough
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.row_lesson,parent,false);
-        return new ViewHolder(view);
+        RowLessonThroughwordBinding rowLessonThroughwordBinding= DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.row_lesson_throughword,parent,false);
+        return new ViewHolder(rowLessonThroughwordBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.tvTitle.setText(position+1+". "+data.get(position).getTitle());
-        holder.tvDes.setText(data.get(position).getDes());
-        holder.imvRight.setOnClickListener(new View.OnClickListener() {
+       LessonThroughWord lessonThroughWord=data.get(position);
+       holder.binding.setLessonthroughword(lessonThroughWord);
+        holder.binding.imvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                viewPresenter.navigateflid(position);
@@ -100,14 +103,10 @@ public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThrough
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle;
-        TextView tvDes;
-        ImageView imvRight;
-        public ViewHolder(View itemview) {
-            super(itemview);
-                tvTitle=itemview.findViewById(R.id.tvTitle);
-                tvDes=itemview.findViewById(R.id.tvDes);
-                imvRight=itemview.findViewById(R.id.imvRight);
+        RowLessonThroughwordBinding binding;
+        public ViewHolder(RowLessonThroughwordBinding itemview) {
+            super(itemview.getRoot());
+            binding=itemview;
         }
 
     }

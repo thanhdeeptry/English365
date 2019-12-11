@@ -1,7 +1,5 @@
 package com.example.firstproject;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,15 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.firstproject.Model.Word;
+import com.example.firstproject.model.Word;
 import com.example.firstproject.adapter.WordAdapter;
 import com.example.firstproject.database.DataBaseForDict;
 import com.example.firstproject.presenter.ViewPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class TranslateFragment extends Fragment implements onClickView {

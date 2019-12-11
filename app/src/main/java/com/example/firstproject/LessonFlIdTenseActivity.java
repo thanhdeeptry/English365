@@ -1,7 +1,6 @@
 package com.example.firstproject;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,17 +10,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.firstproject.Model.LessionFlIdTense;
-import com.example.firstproject.Model.LessonFlIdWord;
-import com.example.firstproject.adapter.LessionFlIdWordAdapter;
+import com.example.firstproject.model.LessonFlIdTense;
 import com.example.firstproject.adapter.LessonFlIdTenseAdapter;
 import com.example.firstproject.database.DataBaseHelper;
 
 import java.util.ArrayList;
 
-public class LessionFlIdTenseActivity extends AppCompatActivity {
+public class LessonFlIdTenseActivity extends AppCompatActivity {
     RecyclerView rvLeessonflIdtense;
-    ArrayList<LessionFlIdTense> list;
+    ArrayList<LessonFlIdTense> list;
     LessonFlIdTenseAdapter adapter;
     DataBaseHelper dataBaseHelper;
     Intent intent;
@@ -29,7 +26,7 @@ public class LessionFlIdTenseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lession_fl_id_tense);
+        setContentView(R.layout.activity_lesson_fl_id_tense);
         toolbar=findViewById(R.id.toolbar);
         intent=getIntent();
         Bundle bundle=intent.getExtras();

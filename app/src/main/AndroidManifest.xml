@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LessonFlLessonIdTenseActivity"></activity>
-        <activity android:name=".LessionFlIdTenseActivity" />
+        <activity android:name=".LessonFlIdTenseActivity" />
         <activity android:name=".LessonFlLessonIdWordActivity" />
         <activity android:name=".LeessonFollowIDWordActivity" />
         <activity

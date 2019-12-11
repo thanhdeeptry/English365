@@ -1,7 +1,6 @@
 package com.example.firstproject;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,10 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.firstproject.Model.LessonFlLessonIdTense;
-import com.example.firstproject.Model.LessonFlLessonIdWord;
+import com.example.firstproject.model.LessonFlLessonIdTense;
 import com.example.firstproject.adapter.LessonFlLessonIdTenseAdapter;
-import com.example.firstproject.adapter.LessonFlLessonIdWordAdapter;
 import com.example.firstproject.database.DataBaseHelper;
 
 import java.util.ArrayList;

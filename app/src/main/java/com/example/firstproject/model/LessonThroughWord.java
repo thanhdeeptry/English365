@@ -1,4 +1,4 @@
-package com.example.firstproject.Model;
+package com.example.firstproject.model;
 
 public class LessonThroughWord {
     public int id;

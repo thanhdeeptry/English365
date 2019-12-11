@@ -2,8 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="lessonfllessonidword"
-            type="com.example.firstproject.model.LessonFlLessonIdWord" />
+            name="lessonfllessonidtense"
+            type="com.example.firstproject.model.LessonFlLessonIdTense" />
 
     </data>
     <LinearLayout
@@ -12,16 +12,16 @@
         android:orientation="vertical">
 
 
-<TextView
-    android:textStyle="bold"
-    android:text="@{lessonfllessonidword.title}"
-    android:textColor="#FF5722"
-    android:textSize="26sp"
-    android:id="@+id/tvTitle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"></TextView>
     <TextView
-        android:text="@{lessonfllessonidword.subtitle1}"
+        android:textStyle="bold"
+        android:text="@{lessonfllessonidtense.title}"
+        android:textColor="#FF5722"
+        android:textSize="26sp"
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+    <TextView
+        android:text="@{lessonfllessonidtense.subtitle1}"
         android:textSize="24sp"
         android:layout_margin="8dp"
         android:id="@+id/tvsubTitle1"

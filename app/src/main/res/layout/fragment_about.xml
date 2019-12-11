@@ -16,7 +16,7 @@
   <LinearLayout
       android:orientation="vertical"
       android:layout_width="match_parent"
-      android:layout_height="200dp">
+      android:layout_height="300dp">
       <TextView
           android:layout_margin="8dp"
           android:textSize="20sp"
@@ -40,6 +40,15 @@
           android:textSize="20sp"
           android:textColor="#138114"
           android:text="Số điện thoại: 0869231335"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+      </TextView>
+      <TextView
+          android:layout_margin="8dp"
+          android:textSize="20sp"
+          android:textColor="#138114"
+          android:text="Version 1.0.0.1"
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
