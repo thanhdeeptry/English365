@@ -7,18 +7,21 @@
     tools:ignore="UnusedNavigation">
 
     <fragment
+        android:title="Ngữ pháp tiếng anh"
         android:id="@+id/nav_grammar"
         android:name="com.example.firstproject.GrammarFragment"
         android:label="Ngữ pháp tiếng Anh"
         tools:layout="@layout/fragment_grammar" />
 
     <fragment
+        android:title="Tra từ, dịch văn bản"
         android:id="@+id/nav_translate"
         android:name="com.example.firstproject.TranslateFragment"
         android:label="Tra từ, dịch văn bản"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:title="Giới thiệu"
         android:id="@+id/nav_about"
         android:label="Giới thiệu"
         tools:layout="@layout/fragment_slideshow" />

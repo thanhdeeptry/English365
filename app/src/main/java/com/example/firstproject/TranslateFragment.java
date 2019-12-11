@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +15,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.firstproject.Model.Word;
+import com.example.firstproject.adapter.WordAdapter;
+import com.example.firstproject.database.DataBaseForDict;
 import com.example.firstproject.presenter.ViewPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TranslateFragment extends Fragment implements onClickView {
-Button btnEngtovn,btnVntoeng;
+Button btnEngtovn;
 EditText edtInput;
 View vRoot;
+RecyclerView lvList;
+
+
+    private DataBaseForDict dataBaseHelper;
+
+    private WordAdapter wordAdapter;
+
+    private LinearLayoutManager linearLayoutManager;
+
+    ArrayList<Word> wordList=new ArrayList<>();
+
 public ViewPresenter presenter;
     public TranslateFragment() {
         // Required empty public constructor
@@ -43,19 +62,20 @@ public ViewPresenter presenter;
                 presenter.Engtovn();
             }
         });
-        btnVntoeng.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.VntoEng();
-            }
-        });
         return vRoot;
     }
     public void init(){
+
         presenter=new ViewPresenter(this);
         edtInput=vRoot.findViewById(R.id.edtInput);
         btnEngtovn=vRoot.findViewById(R.id.btnEngtovn);
-        btnVntoeng=vRoot.findViewById(R.id.btnVntoeng);
+        dataBaseHelper = new DataBaseForDict(getContext());
+        dataBaseHelper.createDataBase();
+
+        lvList=vRoot.findViewById(R.id.lvList);
+        wordAdapter = new WordAdapter(wordList, getContext());
+        linearLayoutManager = new LinearLayoutManager(getContext());
+
     }
 
 
@@ -87,13 +107,27 @@ public ViewPresenter presenter;
 
     @Override
     public void engtovn() {
-        Toast.makeText(getContext(),"Translate English to Vietnamese",Toast.LENGTH_SHORT).show();
+        String word = edtInput.getText().toString().trim();
+
+        // kiểm tra nếu người dùng chưa nhập gì thì dừng lại và thông báo lỗi
+        if (word.isEmpty()) {
+            edtInput.setError("Vui lòng nhập dữ liệu !!!");
+            return;
+            // nếu chữ ko empty thì tiếp tục tìm kiếm và hiển thị danh sách kết quả lên list nếu có
+        } else {
+
+            ArrayList<Word> wordList = dataBaseHelper.searchWord(word);
+            wordAdapter=new WordAdapter(wordList,getContext());
+            lvList.setAdapter(wordAdapter);
+            lvList.setLayoutManager(linearLayoutManager);
+        }
+
+
 
     }
 
     @Override
     public void vntoenng() {
-        Toast.makeText(getContext(),"Translate from Vietnamese to English",Toast.LENGTH_SHORT).show();
     }
 
     @Override

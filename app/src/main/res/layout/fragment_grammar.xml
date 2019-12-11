@@ -2,12 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".GrammarFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.tabs.TabLayout
+        app:tabIndicatorColor="#673AB7"
+        app:tabRippleColor="#C9BF56"
+        app:tabSelectedTextColor="#F7DB2D"
+        app:tabTextColor="#FFF"
         android:theme="@style/AppTheme"
         android:background="#49BC83"
         android:id="@+id/tb_layout"

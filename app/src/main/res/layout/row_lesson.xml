@@ -18,6 +18,9 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:id="@+id/tvTitle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"

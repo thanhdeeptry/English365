@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.firstproject.Model.LessionFlIdTense;
 import com.example.firstproject.Model.LessonFlIdWord;
+import com.example.firstproject.Model.LessonFlLessonIdTense;
 import com.example.firstproject.Model.LessonFlLessonIdWord;
 import com.example.firstproject.Model.LessonThroughTense;
 import com.example.firstproject.Model.LessonThroughWord;
@@ -51,6 +52,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private String  THISID = "thisid";
     private String  TITLE = "Title";
     private String  subTITLE1 = "Subtitle1";
+    private String TABLE6="LessonFlLessonIdTense";
+    private String  ID6 = "id";
+    private String  THISID1 = "thisid";
+    private String  TITLE1 = "Title";
+    private String  subTITLE2 = "Subtitle1";
     private void copyDataBase() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
         String outFileName = DB_PATH + DB_NAME;
@@ -245,6 +251,33 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
         }
         return lessonFlLessonIdWords;
+    }
+    public ArrayList<LessonFlLessonIdTense> getAllLessonFlLessonIdtense(String id){
+        ArrayList<LessonFlLessonIdTense> lessonFlLessonIdTenses=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        String selectQuery = "select * from " + TABLE6 + " where id='" + id + "'";
+        Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()) {
+
+                    LessonFlLessonIdTense lessonFlLessonIdTense=new LessonFlLessonIdTense();
+                    lessonFlLessonIdTense.id=cursor.getInt(cursor.getColumnIndex(ID6));
+                    lessonFlLessonIdTense.thisid=cursor.getInt(cursor.getColumnIndex(THISID1));
+                    lessonFlLessonIdTense.title=cursor.getString(cursor.getColumnIndex(TITLE1));
+                    lessonFlLessonIdTense.subtitle1=cursor.getString(cursor.getColumnIndex(subTITLE2));
+
+                    lessonFlLessonIdTenses.add(lessonFlLessonIdTense);
+                    cursor.moveToNext();
+
+                }
+                cursor.close();
+            }
+        }
+        return lessonFlLessonIdTenses;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {

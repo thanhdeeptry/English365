@@ -96,6 +96,7 @@ public class LessionFlIdWordAdapter extends RecyclerView.Adapter<LessionFlIdWord
     @Override
     public void navigateflid(int pos) {
         Bundle bundle=new Bundle();
+        bundle.putString("name",list.get(pos).getName());
         bundle.putString("id",list.get(pos).getId()+"");
         Intent intent=new Intent(context, LessonFlLessonIdWordActivity.class);
         intent.putExtras(bundle);

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -24,6 +25,14 @@ public class GrammarFragment  extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
     public GrammarFragment(){
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Toolbar toolbar =new Toolbar(getContext());
+        toolbar.setTitle("Ngữ pháp tiếng anh");
+
     }
 
     @Nullable

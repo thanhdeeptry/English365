@@ -92,6 +92,7 @@ public class LessonThroughWordAdapter extends RecyclerView.Adapter<LessonThrough
     @Override
     public void navigateflid(int pos) {
         Bundle bundle=new Bundle();
+        bundle.putString("name",data.get(pos).getTitle());
         bundle.putString("idword",data.get(pos).getId()+"");
         Intent intent=new Intent(context, LeessonFollowIDWordActivity.class);
         intent.putExtras(bundle);

@@ -3,6 +3,7 @@ package com.example.firstproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,15 +23,18 @@ ArrayList<LessonFlIdWord> list;
 LessionFlIdWordAdapter adapter;
 DataBaseHelper dataBaseHelper;
 Intent intent;
+Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leesson_flow_id);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
         intent=getIntent();
         Bundle bundle=intent.getExtras();
+        String title=bundle.getString("name");
+        toolbar=findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         rvLeessonflId = findViewById(R.id.rvLessonflowid);
         rvLeessonflId.setHasFixedSize(true);
         list= new ArrayList<>();

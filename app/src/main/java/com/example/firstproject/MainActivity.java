@@ -25,12 +25,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     DrawerLayout drawer;
     ViewPresenter viewPresenter;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar= findViewById(R.id.toolbar);
+        toolbar.setTitle("Ngữ pháp tiếng anh");
         setSupportActionBar(toolbar);
         viewPresenter = new ViewPresenter((onClickView) this);
         drawer = findViewById(R.id.drawer_layout);
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.content, grammarFragment);
         transaction.commit();
         drawer.closeDrawers();
+        toolbar.setTitle("Ngữ pháp tiếng anh");
     }
 
 
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction1.replace(R.id.content, translateFragment);
         transaction1.commit();
         drawer.closeDrawers();
+        toolbar.setTitle("Tra từ dịch văn bản");
     }
 
     @Override
@@ -109,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction2.replace(R.id.content, aboutFragment);
         transaction2.commit();
         drawer.closeDrawers();
+        toolbar.setTitle("Giới thiệu");
     }
 
     @Override

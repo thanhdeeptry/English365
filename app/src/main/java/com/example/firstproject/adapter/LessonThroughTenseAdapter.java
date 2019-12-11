@@ -95,6 +95,7 @@ public  class LessonThroughTenseAdapter extends RecyclerView.Adapter<LessonThrou
     @Override
     public void navigateflid(int pos) {
         Bundle bundle=new Bundle();
+        bundle.putString("name",data.get(pos).getTitle());
         bundle.putString("idtense",data.get(pos).getId()+"");
         Intent intent=new Intent(context, LessionFlIdTenseActivity.class);
         intent.putExtras(bundle);

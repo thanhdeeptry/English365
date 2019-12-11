@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.firstproject.LessonFlLessonIdTenseActivity;
 import com.example.firstproject.LessonFlLessonIdWordActivity;
 import com.example.firstproject.Model.LessionFlIdTense;
 import com.example.firstproject.R;
@@ -93,7 +94,8 @@ public  class LessonFlIdTenseAdapter extends RecyclerView.Adapter<LessonFlIdTens
     public void navigateflid(int pos) {
         Bundle bundle=new Bundle();
         bundle.putString("id",idTenses.get(pos).getId()+"");
-        Intent intent=new Intent(context, LessonFlLessonIdWordActivity.class);
+        bundle.putString("name",idTenses.get(pos).getName()+"");
+        Intent intent=new Intent(context, LessonFlLessonIdTenseActivity.class);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }

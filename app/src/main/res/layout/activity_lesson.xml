@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="8dp"
     android:orientation="vertical"
-    android:id="@+id/rvLessonflLessonid"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LessonFlLessonIdWordActivity">
-</androidx.recyclerview.widget.RecyclerView>
+    <androidx.appcompat.widget.Toolbar
+        app:titleTextColor="#FFF"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#49BC83"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLessonflLessonid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>

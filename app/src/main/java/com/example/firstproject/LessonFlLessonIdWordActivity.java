@@ -3,6 +3,7 @@ package com.example.firstproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,20 +25,24 @@ public class LessonFlLessonIdWordActivity extends AppCompatActivity {
     LessonFlLessonIdWordAdapter adapter;
     DataBaseHelper dataBaseHelper;
     Intent intent;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        toolbar=findViewById(R.id.toolbar);
         intent=getIntent();
         Bundle bundle=intent.getExtras();
+        toolbar.setTitle(bundle.getString("name"));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         rvLeessonfllessonId = findViewById(R.id.rvLessonflLessonid);
         rvLeessonfllessonId.setHasFixedSize(true);
         list= new ArrayList<>();
         dataBaseHelper = new DataBaseHelper(this);
         dataBaseHelper.createDataBase();
+
         list=dataBaseHelper.getAllLessonFlLessonIdWord(bundle.getString("id"));
         configRv();
     }

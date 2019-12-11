@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LessionFlIdTenseActivity"></activity>
+        <activity android:name=".LessonFlLessonIdTenseActivity"></activity>
+        <activity android:name=".LessionFlIdTenseActivity" />
         <activity android:name=".LessonFlLessonIdWordActivity" />
         <activity android:name=".LeessonFollowIDWordActivity" />
         <activity

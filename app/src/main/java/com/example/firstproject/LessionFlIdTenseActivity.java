@@ -3,6 +3,7 @@ package com.example.firstproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,15 +25,17 @@ public class LessionFlIdTenseActivity extends AppCompatActivity {
     LessonFlIdTenseAdapter adapter;
     DataBaseHelper dataBaseHelper;
     Intent intent;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lession_fl_id_tense);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        toolbar=findViewById(R.id.toolbar);
         intent=getIntent();
         Bundle bundle=intent.getExtras();
+        toolbar.setTitle(bundle.getString("name"));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         rvLeessonflIdtense = findViewById(R.id.rvLessionflidtense);
         rvLeessonflIdtense.setHasFixedSize(true);
         list= new ArrayList<>();
@@ -45,8 +48,6 @@ public class LessionFlIdTenseActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvLeessonflIdtense.setLayoutManager(layoutManager);
         adapter= new LessonFlIdTenseAdapter(this, list) {
-
-
         };
         rvLeessonflIdtense.setAdapter(adapter);
     }
